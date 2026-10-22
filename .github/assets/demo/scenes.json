@@ -1,0 +1,147 @@
+{
+  "accent": "#6e4ec4",
+  "disclosure": "Illustrated PR preview \u00b7 upload verified against the local GitHub stub",
+  "scenes": [
+    {
+      "title": "A screenshot belongs in the pull request.",
+      "blocks": [
+        {
+          "label": "LOCAL FILE \u00b7 shot.png",
+          "rows": [
+            "shot.png",
+            "Screenshot ready to share"
+          ],
+          "box": [
+            36,
+            151,
+            488,
+            413
+          ],
+          "kind": "image",
+          "file": "sample.png"
+        },
+        {
+          "label": "PULL REQUEST",
+          "rows": [
+            {
+              "text": "Before / after screenshots",
+              "state": "muted"
+            },
+            {
+              "text": "No attachment yet",
+              "state": "muted"
+            }
+          ],
+          "box": [
+            576,
+            151,
+            488,
+            413
+          ],
+          "kind": "rows"
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "title": "Upload it from the terminal.",
+      "blocks": [
+        {
+          "label": "COMMAND",
+          "rows": [
+            "ghattach upload shot.png",
+            "  --repo OWNER/REPO",
+            "  --markdown"
+          ],
+          "box": [
+            36,
+            151,
+            488,
+            413
+          ],
+          "kind": "code"
+        },
+        {
+          "label": "RESULT",
+          "rows": [
+            {
+              "text": "Upload accepted",
+              "state": "good"
+            },
+            "Markdown embed returned",
+            "No image committed to git"
+          ],
+          "box": [
+            576,
+            151,
+            488,
+            413
+          ],
+          "kind": "rows"
+        }
+      ],
+      "arrows": [
+        [
+          524,
+          350,
+          576,
+          350
+        ]
+      ]
+    },
+    {
+      "title": "Paste the embed. Show the change.",
+      "blocks": [
+        {
+          "label": "MARKDOWN",
+          "rows": [
+            "![shot.png]",
+            "(https://github.com/",
+            " user-attachments/assets/",
+            " <uuid>)"
+          ],
+          "box": [
+            36,
+            151,
+            488,
+            413
+          ],
+          "kind": "code",
+          "size": 21
+        },
+        {
+          "label": "ILLUSTRATED PR \u00b7 attached image",
+          "rows": [
+            {
+              "text": "Before / after screenshots",
+              "state": "accent"
+            },
+            {
+              "text": "shot.png attached",
+              "state": "good"
+            },
+            "Same workflow for recordings"
+          ],
+          "box": [
+            576,
+            151,
+            488,
+            413
+          ],
+          "kind": "image",
+          "file": "sample.png"
+        }
+      ],
+      "arrows": [
+        [
+          524,
+          350,
+          576,
+          350
+        ]
+      ]
+    }
+  ],
+  "name": "ghattach",
+  "output": "demo.gif"
+}

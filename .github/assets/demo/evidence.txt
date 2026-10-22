@@ -1,0 +1,12 @@
+Captured locally on 2026-10-20 using examples/embed-one-screenshot/run.sh and
+.github/assets/demo/sample.png as shot.png, against internal/demostub.
+The storyboard is .github/assets/demo/scenes.json; this is an illustrated walkthrough.
+
+Reproduction commands (repository root):
+sh examples/embed-one-screenshot/run.sh
+# The visual uses .github/assets/demo/sample.png as shot.png with the same stub setup.
+
+Observed output:
+Paste the user_session VALUE, then Enter: Session stored at /home/demo/.config/ghattach/cookies.json
+Verify with: ghattach upload <file> --repo OWNER/REPO
+![shot.png](https://github.com/user-attachments/assets/00000000-0000-4000-8000-000000000001)

@@ -1,0 +1,34 @@
+ghattach
+Copyright 2026 Workloom Solutions Private Limited
+
+This repository includes the following third-party material:
+
+- Parts of the upload protocol in internal/cmd/client.go are adapted from
+  gh-image, https://github.com/drogers0/gh-image: the upload-token scrape, the
+  policy request, the S3 form upload, the finalize request, the markdown
+  rendering and the content-type lookup. Copyright (c) 2025-2026 drogers0,
+  licensed under the MIT License. The full license text is in
+  third_party/gh-image/LICENSE.
+
+- CODE_OF_CONDUCT.md is adapted from the Contributor Covenant, version 2.1,
+  https://www.contributor-covenant.org/version/2/1/code_of_conduct/,
+  licensed under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/.
+
+The release binaries compile in the following. Each license text is at the
+path given, and the release archives ship that folder:
+
+- The Go standard library and runtime, from the Go release the binary is
+  built with (Go 1.27 for the published binaries), https://go.dev,
+  BSD-3-Clause, third_party/licenses/go/LICENSE.
+- github.com/spf13/cobra v1.10.2, https://github.com/spf13/cobra,
+  Apache-2.0, third_party/licenses/github.com/spf13/cobra/LICENSE.txt.
+- github.com/spf13/pflag v1.0.10, https://github.com/spf13/pflag,
+  BSD-3-Clause, third_party/licenses/github.com/spf13/pflag/LICENSE.
+- golang.org/x/sys v0.48.0, https://cs.opensource.google/go/x/sys,
+  BSD-3-Clause, third_party/licenses/golang.org/x/sys/unix/LICENSE (and the
+  same text at .../x/sys/windows/LICENSE).
+- golang.org/x/term v0.46.0, https://cs.opensource.google/go/x/term,
+  BSD-3-Clause, third_party/licenses/golang.org/x/term/LICENSE.
+- github.com/inconshreveable/mousetrap v1.1.0, Windows binaries only,
+  https://github.com/inconshreveable/mousetrap, Apache-2.0,
+  third_party/licenses/github.com/inconshreveable/mousetrap/LICENSE.

@@ -1,0 +1,41 @@
+Store the GitHub user_session cookie that uploads use.
+
+Uploads use your GitHub browser session. The upload endpoint rejects
+personal access tokens and app tokens.
+
+On macOS, read the cookie from a signed-in Chrome:
+
+  ghattach login --from-chrome
+
+macOS asks for access to the "Chrome Safe Storage" keychain item. Choose
+"Allow" for this request and approve again when prompted. "Always Allow"
+gives /usr/bin/security standing access to the key for Chrome cookies
+across sites, which other local processes can use. --chrome-profile picks
+one profile when several are signed in, and pins it for later re-reads.
+
+Otherwise, paste the value:
+
+  1. Open github.com in a signed-in browser tab
+  2. DevTools (F12, or Cmd+Option+I on macOS) > Application > Cookies >
+     https://github.com
+  3. Copy the VALUE of the "user_session" cookie
+  4. ghattach login --cookie -        (paste at the prompt, then Enter)
+
+Paste only the value at a terminal prompt. To pass a whole Cookie header,
+pipe it instead, such as pbpaste on macOS or xclip -o -selection clipboard
+on Linux, into ghattach login --cookie -
+
+'--cookie -' keeps the value out of shell history and ps output.
+'--cookie <value>' does not.
+
+A user_session cookie is full-account and unscoped. Treat it like a
+password. Revoke any session at https://github.com/settings/sessions.
+
+Usage:
+  ghattach login [flags]
+
+Flags:
+      --chrome-profile string   Chrome profile directory or file-name pattern to read and pin, such as Default (default: the profile whose session expires last)
+      --cookie string           the user_session value or full Cookie header, or - to read it from standard input
+      --from-chrome             read user_session from Chrome's cookie store (macOS)
+  -h, --help                    help for login

@@ -1,0 +1,38 @@
+# Builds the release binaries on a tag push (.github/workflows/release.yml).
+# Check locally with: goreleaser check && goreleaser release --snapshot --clean
+version: 2
+
+builds:
+  - id: ghattach
+    main: ./cmd/ghattach
+    binary: ghattach
+    env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w -X main.version={{ .Tag }}
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    files:
+      - LICENSE
+      - NOTICE
+      - README.md
+      - third_party/**/*
+
+checksum:
+  name_template: checksums.txt
+
+release:
+  github:
+    owner: tetriz-ai
+    name: ghattach
+
+# The release notes come from CHANGELOG.md (see release.yml).
+changelog:
+  disable: true

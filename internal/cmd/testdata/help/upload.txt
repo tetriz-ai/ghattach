@@ -1,0 +1,19 @@
+Upload one or more local files to GitHub's user-attachments CDN.
+
+Each upload prints the asset URL. With --markdown it prints the embed GitHub
+inserts on drag-and-drop, which for a video is the bare URL. An upload
+inherits the repository's visibility. On a private repository, only people
+with access to it can open the link.
+
+Examples:
+  ghattach upload before.png after.png --repo OWNER/REPO
+  ghattach upload demo.mp4 --repo OWNER/REPO --markdown
+
+Usage:
+  ghattach upload <file> [<file>...] [flags]
+
+Flags:
+  -h, --help          help for upload
+      --markdown      print the markdown embed instead of the bare URL
+  -R, --repo string   target repository as OWNER/REPO (required)
+      --repo-id int   numeric repository ID (skips the gh lookup)

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="200" viewBox="0 0 880 200" role="img" aria-label="ghattach: upload local files to GitHub's user-attachments CDN and print the embed link">
+  <rect width="880" height="200" rx="16" fill="#161B22"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">
+    <text x="48" y="42" fill="#8B949E">$ ghattach upload shot.png --repo OWNER/REPO --markdown</text>
+    <rect x="44" y="53" width="566" height="24" rx="4" fill="#E6EDF3"/>
+    <text x="52" y="70" fill="#161B22">![shot.png](https://github.com/user-attachments/assets/…)</text>
+  </g>
+  <text x="48" y="142" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-1.5" fill="#E6EDF3">ghattach</text>
+  <text x="48" y="176" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" fill="#C9D1D9">Upload local files to GitHub&#39;s user-attachments CDN and print the embed link.</text>
+</svg>

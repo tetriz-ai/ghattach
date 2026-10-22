@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go build ./...)",
+      "Bash(go vet ./...)",
+      "Bash(go test -race -count=1 ./...)",
+      "Bash(go test ./internal/cmd -run TestHelpText -update)",
+      "Bash(golangci-lint run)",
+      "Bash(scripts/run-examples.sh)",
+      "Bash(go install github.com/google/go-licenses/v2@v2.0.1)",
+      "Bash(.github/scripts/third-party-licenses.sh --check)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+Delete the stored session cookie from the local cookie store.
+
+This only removes the local copy — the GitHub session itself stays valid
+until it expires or is revoked at https://github.com/settings/sessions.
+
+Usage:
+  ghattach logout [flags]
+
+Flags:
+  -h, --help   help for logout

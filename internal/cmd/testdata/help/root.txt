@@ -1,0 +1,30 @@
+ghattach uploads local files to GitHub's user-attachments CDN.
+
+It prints the same https://github.com/user-attachments/assets/<uuid> URLs
+that dragging a file into a pull request description gives, without
+committing anything. Uploads inherit the target repository's visibility.
+
+First-time setup: ghattach login --help
+
+Then:
+  ghattach upload ./shot.png --repo OWNER/REPO
+  ghattach upload ./shot.png --repo OWNER/REPO --markdown
+
+The session cookie expires from time to time. On macOS, an upload that
+finds it expired re-reads Chrome once and retries.
+
+Usage:
+  ghattach [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  login       Store the GitHub user_session cookie
+  logout      Delete the stored session cookie
+  upload      Upload files to GitHub user-attachments and print their URLs
+
+Flags:
+  -h, --help      help for ghattach
+  -v, --version   version for ghattach
+
+Use "ghattach [command] --help" for more information about a command.

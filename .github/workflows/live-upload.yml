@@ -1,0 +1,61 @@
+# Uploads one file to GitHub for real. It needs a GitHub session cookie, so it
+# runs only when started by hand, never on a pull request or a schedule.
+#
+# Setup: follow docs/usage.md#use-ghattach-in-a-ci-job. Configure required
+# reviewers and main-only deployment branches on the live-upload environment.
+# Store GHATTACH_TEST_SESSION only there, using a dedicated machine account
+# with access only to one throwaway public repository. Reviewer protection
+# must be configured in GitHub settings before provisioning the secret.
+name: Live upload
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: Test repository, as owner/repo
+        required: true
+      repo_id:
+        description: Its numeric id (gh api repos/OWNER/REPO --jq .id)
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  upload:
+    name: Upload to ${{ inputs.repo }}
+    if: github.ref == 'refs/heads/main'
+    environment: live-upload
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "1.27.3"
+          cache: false
+      - run: go install ./cmd/ghattach
+      - name: Log in
+        env:
+          SESSION: ${{ secrets.GHATTACH_TEST_SESSION }}
+        run: |
+          printf '%s\n' "$SESSION" | "$(go env GOPATH)/bin/ghattach" login --cookie -
+      - name: Upload and open the link
+        env:
+          REPO: ${{ inputs.repo }}
+          REPO_ID: ${{ inputs.repo_id }}
+        run: |
+          url=$("$(go env GOPATH)/bin/ghattach" upload testdata/pixel.png --repo "$REPO" --repo-id "$REPO_ID")
+          echo "$url"
+          case "$url" in
+            https://github.com/user-attachments/assets/*) ;;
+            *) echo "not a user-attachments URL"; exit 1 ;;
+          esac
+          curl -fsSL -o /dev/null -w 'HTTP %{http_code}, %{size_download} bytes\n' "$url"
+      - name: Log out
+        if: always()
+        run: |
+          "$(go env GOPATH)/bin/ghattach" logout
