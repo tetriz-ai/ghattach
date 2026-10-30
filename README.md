@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Go version](https://img.shields.io/github/go-mod/go-version/tetriz-ai/ghattach)](go.mod)
 
+<a href="https://www.producthunt.com/products/agentic-workflow-kit?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-tetriz-engineering-kit" target="_blank" rel="noopener noreferrer"><img alt="Tetriz Engineering Kit  - Open-source tools for everything around AI coding | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1296838&amp;theme=light&amp;t=1793345913841"></a>
+
 A screenshot or screen recording in a pull request usually means dragging the file into GitHub
 in a browser, which a script or CI job cannot do, so the image gets committed or left out.
 ghattach does that upload from a terminal and prints the link to paste, so nothing is committed.
